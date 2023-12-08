@@ -1,0 +1,163 @@
+<html lang="en"><head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Domestic Predators: Mapping Predator drone deployments within the United States</title>
+	
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <button id="infobox-open">
+        <svg fill="currentColor"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 111.577 111.577" xml:space="preserve">
+            <g>
+                <path d="M78.962,99.536l-1.559,6.373c-4.677,1.846-8.413,3.251-11.195,4.217c-2.785,0.969-6.021,1.451-9.708,1.451
+                    c-5.662,0-10.066-1.387-13.207-4.142c-3.141-2.766-4.712-6.271-4.712-10.523c0-1.646,0.114-3.339,0.351-5.064
+                    c0.239-1.727,0.619-3.672,1.139-5.846l5.845-20.688c0.52-1.981,0.962-3.858,1.316-5.633c0.359-1.764,0.532-3.387,0.532-4.848
+                    c0-2.642-0.547-4.49-1.636-5.529c-1.089-1.036-3.167-1.562-6.252-1.562c-1.511,0-3.064,0.242-4.647,0.71
+                    c-1.59,0.47-2.949,0.924-4.09,1.346l1.563-6.378c3.829-1.559,7.489-2.894,10.99-4.002c3.501-1.111,6.809-1.667,9.938-1.667
+                    c5.623,0,9.962,1.359,13.009,4.077c3.047,2.72,4.57,6.246,4.57,10.591c0,0.899-0.1,2.483-0.315,4.747
+                    c-0.21,2.269-0.601,4.348-1.171,6.239l-5.82,20.605c-0.477,1.655-0.906,3.547-1.279,5.676c-0.385,2.115-0.569,3.731-0.569,4.815
+                    c0,2.736,0.61,4.604,1.833,5.597c1.232,0.993,3.354,1.487,6.368,1.487c1.415,0,3.025-0.251,4.814-0.744
+                    C76.854,100.348,78.155,99.915,78.962,99.536z M80.438,13.03c0,3.59-1.353,6.656-4.072,9.177c-2.712,2.53-5.98,3.796-9.803,3.796
+                    c-3.835,0-7.111-1.266-9.854-3.796c-2.738-2.522-4.11-5.587-4.11-9.177c0-3.583,1.372-6.654,4.11-9.207
+                    C59.447,1.274,62.729,0,66.563,0c3.822,0,7.091,1.277,9.803,3.823C79.087,6.376,80.438,9.448,80.438,13.03z"/>
+            </g>
+        </svg>         
+    </button>
+
+    <div id="infobox-container" class="hide">
+        <div class="infobox-wrapper">
+            <div class="infobox">
+                <div class="intro-img"></div>
+                <div class="infobox-content">
+                    <h1>Domestic Predators: Mapping Predator drone deployments within the United States</h1>
+                    <p>In an era marked by technological advancements and a growing reliance on unmanned aerial systems (UAS), the deployment of predator drones within the United States has emerged as a focal point of concern, curiosity, and debate. This mapping project seeks to unveil the presence, impact, and potential threats posed by the domestic use of predator drones. As these aerial technologies, once synonmyous with missile attacks, integrate into domestic operations, it is essential to understand their spatial footprint, implications, and evolving use.</p>
+                    <p>With sophisticated surveillance capabilities, these drones traverse the skies over urban landscapes, rural expanses, and everything in between. The project narrates a story of how predator drones, once confined to military theaters, have found a place in the American homeland. Harnessing digital mapping technologies, it visually encapsulates the evolving nature of drone deployments, their patrol routes, and the potential ramifications on the nation.</p>
+                    </div>
+                    <div class="infobox-footer">
+                        <div class="links">
+                            <span>By <a href="https://srod.ca">Sebastian Rodriguez</a></span>
+                        </div>
+                        <div class="links">
+                            <a href="https://github.com/seb646/predator-drones" target="_blank" class="github-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            </a>
+                            <button tabindex="0" id="infobox-close-btn">
+                                <span>Open map</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="w-4 h-4 ml-1"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>
+                            </button>
+                        </div>
+                </div>
+            </div>
+            <div class="infobox" style="margin-top: 20px;">
+                <div class="infobox-content">
+                    <h2>Brief History</h2>
+                    <p>During the aftermath of <a href="https://en.wikipedia.org/wiki/Hurricane_Katrina">Hurricane Katrina</a>, small unmanned aerial systems (SUAS) deployed to assist relief efforts and assess damage&mdash;this event was the impetus for the proliferation of drone use that we see today. The U.S. Air Force requested permission to deploy their predator drones to support the efforts, however, the <a href="https://en.wikipedia.org/wiki/Federal_Aviation_Administration">FAA</a> refused the request due to national airspace restrictions.<sup>1</sup> Following Katrina, the FAA created a framework to allow the military to use their drones domestically.<sup>2</sup></p>
+                    <p>Currently, three organizations within the United States&mdash;<a href="https://en.wikipedia.org/wiki/U.S._Customs_and_Border_Protection">Customs & Border Protection</a> (CBP), the <a href="https://en.wikipedia.org/wiki/National_Guard_(United_States)">National Guard</a>, and <a href="https://en.wikipedia.org/wiki/NASA">NASA</a>&mdash;are equipped with Predators and have a record of deploying domestically at the request of local and state officials. As of 2020, flight records suggest that CBP regularly operates a fleet of 7 MQ-9 Predators.<sup>3</sup> NASA also maintains small fleet of MQ-9 variants, and the National Guard has countless MQ-1 and MQ-9 drones scattered across 12 domestic bases. Local and state officials can request a Predator drone from any of these organizations to support law enforcement, search and rescue, national disaster recovery, and more. Predators have notably deployed in response to the <a href="https://en.wikipedia.org/wiki/George_Floyd_protests">2020 George Floyd protests</a>, and they have also been used during numerous wildfires, hurricanes, and border patrol operations.<sup>4</sup></p>
+                    <p>The Predator drones operated by CBP possess various sensors, cameras (including night vision), and signals interception technology. The cameras on a CBP predator can stream a live video feed to operators on the ground and are designed to identify armed individuals. The drone's surveillance technology can monitor a cell phone's communications (30MHz to 3GHz), and it can pinpoint a mobile phone's location.<sup>5</sup> CBP drones regularly patrol the entirety of the US-Mexico border and a segment of the US-Canada border from eastern Montana to Lake Superior.<sup>3</sup></p>
+                    <div class="divider"></div>
+                    <div class="sources">
+                        <p><sup>1</sup> Robinson, A. (2006). "FAA authorizes Predators to seek survivors" U.S. Air Force (<a href="https://web.archive.org/web/20120816060044/http://www.af.mil/news/story.asp?storyID=123024467">archived</a>).</p>
+                        <p><sup>2</sup> "Memorandum AFS-400 UAS Policy 05-01" (2005). Federal Aviation Administration (<a href="https://www.thedroneprofessor.com/wp-content/uploads/2017/12/FAA-policy-05-01.pdf">archived</a>).</p>
+                        <p><sup>3</sup> McKay, T. & Mehrotra, D. (2020). "We Mapped Where Customs and Border Protection Drones Are Flying in the U.S. and Beyond." <a href="https://gizmodo.com/upgrades-phones-tablets-smartwatches-apple-google-1851019295">Gizmodo</a>.</p>
+                        <p><sup>4</sup> Cox, J. (2020). "The Government is Regularly Flying Predator Drones Over American Cities." <a href="https://www.vice.com/en/article/n7wnzm/government-flying-predator-drones-american-cities">Vice</a>.</p>
+                        <p><sup>5</sup> McCallagh, D. (2013). "DHS built domestic surveillance tech into Predator drones." <a href="https://www.cnet.com/tech/tech-industry/dhs-built-domestic-surveillance-tech-into-predator-drones/">CNET</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="legend-btn">
+        <span>Legend</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>  
+    </button>
+
+    <div id="legend" class="hide">
+        <div class="legend-title">
+            <h2>Legend</h2>
+            <button id="legend-close">
+                <span>X</span>
+            </button>
+        </div>
+        <div id="legend-container">
+            <div class="legend-item">
+                <img src="assets/images/cbp.svg">
+                <span>Border Patrol Drone Base</span>
+            </div>
+            <div class="legend-item">
+                <img src="assets/images/usaf.svg">
+                <span>Military Drone Base</span>
+            </div>
+            <div class="legend-item">
+                <img src="assets/images/nasa.svg">
+                <span>NASA Drone Base</span>
+            </div>
+            <div class="legend-item">
+                <img src="assets/images/arrest.svg">
+                <span>Drone-aided Arrest</span>
+            </div>
+            <div class="legend-item">
+                <img src="assets/images/surveillance.svg">
+                <span>Surveillance Operation</span>
+            </div>
+            <div class="legend-item">
+                <img src="assets/images/weather.svg">
+                <span>Natural Diasaster Response</span>
+            </div>
+            <div class="legend-item">
+                <img src="assets/images/sar.svg">
+                <span>Search & Rescue Operation</span>
+            </div>
+            <div class="legend-item">
+                <img src="assets/images/crash.svg">
+                <span>Border Patrol Drone Crash</span>
+            </div>
+            <div class="legend-item">
+                <div class="fighter-range"></div>
+                <span>Drone Range</span>
+            </div>
+            <div class="legend-item">
+                <div class="cbp-route-box"><span class="cbp-route"></span></div>
+                <span>Border Patrol Drone Route</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+    
+    <script type="text/javascript" src="assets/locations.js"></script>
+    <script type="text/javascript" src="assets/map.js"></script>
+    <script>
+        if(!document.cookie.includes("popup=false")){
+            $("#infobox-container").removeClass("hide");
+        }
+        $('#infobox-open').click(function () {
+            document.getElementById("infobox-container").scroll(0,0);
+            $("#infobox-container").removeClass("hide");
+            document.cookie = "popup=false;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        });
+        $('#infobox-close-btn').click(function () {
+            $("#infobox-container").addClass("hide");
+            document.cookie = "popup=false";
+        });
+        $('#legend-btn').click(function () {
+            $("#legend").removeClass("hide");
+            $("#legend-btn").addClass("hide");
+        });
+        $('#legend-close').click(function () {
+            $("#legend").addClass("hide");
+            $("#legend-btn").removeClass("hide");
+        });
+    </script>
+</body>
+</html>
